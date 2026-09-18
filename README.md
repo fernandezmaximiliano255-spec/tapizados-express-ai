@@ -1,55 +1,61 @@
-# Tapizados Express
+# Asistente comercial para Tapizados Express
 
-Sitio web profesional para un servicio de limpieza de tapizados a domicilio.
+Proyecto de portfolio orientado al análisis de datos, la automatización y la integración de un asistente conversacional para consultas comerciales.
 
 ## Objetivo
 
-Presentar los servicios, mostrar trabajos realizados y permitir que potenciales clientes soliciten un presupuesto desde cualquier dispositivo.
+Integrar un asistente local capaz de guiar consultas sobre servicios de limpieza, estimar presupuestos según servicio y tamaño, validar datos y registrar las consultas en PostgreSQL mediante SQL.
 
-## Stack inicial
+El proyecto busca mostrar cómo un analista puede transformar una necesidad de negocio en un flujo de datos funcional, medible y documentado. La interfaz React funciona como punto de interacción, pero el foco está en la lógica de negocio, la API, el modelado y la persistencia de datos.
 
-- React + Vite
-- CSS responsive sin framework para controlar el diseño visual
-- Lucide React para iconos
-- Backend en Python con FastAPI
-- PostgreSQL para servicios, consultas y conversaciones
-- Deploy previsto: Vercel
+## Enfoque de datos
+
+- Modelado de servicios, consultas, conversaciones y mensajes.
+- PostgreSQL como base de datos relacional.
+- Scripts SQL para crear tablas, restricciones, índices y datos iniciales.
+- API en Python con FastAPI para validar y exponer los datos.
+- Registro de consultas para analizar posteriormente las necesidades de los usuarios.
+
+## Tecnologías
+
+- Python y FastAPI
+- PostgreSQL y SQL
+- React + Vite para la interfaz de demostración
+- Validación de datos con Pydantic
 
 ## Funcionalidades del MVP
 
-- Landing page responsive
-- Sección de servicios
-- Galería de trabajos antes/después
-- Zonas de cobertura
-- Formulario de presupuesto
-- Botón de contacto directo por WhatsApp
-- Asistente conversacional con presupuestos estimados
-- Validación de datos y registro de consultas en entorno local
-- SEO básico mediante título y descripción HTML
+- Preguntas guiadas sobre servicios y tamaños.
+- Presupuestos estimativos según el servicio seleccionado.
+- Consultas libres con respuestas orientativas.
+- Validación de nombre, localidad y teléfono.
+- Registro de consultas y conversaciones en PostgreSQL.
+- Modo demo público sin guardar datos reales de visitantes.
 
-## Modo demo público
+## Ejecución local
 
-La versión publicada funciona en modo demostración. El asistente se puede probar, pero no envía ni guarda datos reales de los visitantes. Esto permite mostrar la experiencia sin exponer una base de datos ni recopilar información personal.
-
-El proyecto incluye el backend, el esquema SQL y la persistencia con PostgreSQL para ejecutarlos localmente.
-
-## Base de datos y backend
-
-- `database/schema.sql`: servicios y consultas comerciales.
-- `database/02_conversaciones.sql`: conversaciones y mensajes.
-- `backend/main.py`: API FastAPI.
-- `backend/README.md`: instrucciones para ejecutar la API.
-
-## Ejecutar localmente
+### Interfaz
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Próximos pasos
+### API y base de datos
 
-1. Conectar el formulario con Supabase.
-2. Agregar almacenamiento de imágenes para la galería.
-3. Crear un panel privado para consultar presupuestos.
-4. Añadir validación, protección anti-spam y notificaciones por correo.
+1. Crear una base PostgreSQL llamada `tapizados_express`.
+2. Ejecutar `database/schema.sql`.
+3. Ejecutar `database/02_conversaciones.sql`.
+4. Configurar las variables de conexión en `backend/.env` a partir de `backend/.env.example`.
+5. Instalar las dependencias y ejecutar:
+
+```bash
+pip install -r backend/requirements.txt
+uvicorn backend.main:app --reload
+```
+
+La documentación interactiva de la API queda disponible en `http://127.0.0.1:8000/docs`.
+
+## Demo pública
+
+La versión publicada permite probar la experiencia del asistente, pero funciona sin enviar ni guardar datos reales. La API, el esquema SQL y la persistencia completa se pueden ejecutar localmente.
